@@ -1,0 +1,23 @@
+/* Color definitions */
+$primary:             #9f0d08;
+$secondary:           #b2aeae;
+$background-dark:     #161618;
+$background:          #202124;
+$background-light:    #33353B;
+
+.app-container {
+  display: flex;
+  height: 100vh;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+* {
+  color: #ffffff;
+  background-color: $background-light;
+  font-family: Cambria, Georgia, serif;
+}
