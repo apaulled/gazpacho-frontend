@@ -3,7 +3,8 @@
 .navbar {
   width: 200px;
   background-color: $background;
-  padding: 20px;
+  padding: 20px 10px 20px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 
   ul {
     background-color: $background;
@@ -12,17 +13,17 @@
 
     li {
       background-color: $background;
-      margin-bottom: 15px;
+      margin-bottom: 25px;
 
       a {
         background-color: $background;
         text-decoration: none;
         color: $background;
         font-weight: bold;
-        font-size: x-large;
+        font-size: xx-large;
 
         &.active {
-          color: $primary;
+          color: $white;
         }
       }
     }
