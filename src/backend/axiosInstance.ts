@@ -1,6 +1,6 @@
 import axios, { InternalAxiosRequestConfig, AxiosResponse } from 'axios';
 import * as Store from './storage';
-import { AuthCredentials, refreshToken } from "./loginApi";
+import { TokenResponse, refreshToken } from "./loginApi";
 
 const getEndpoints = () => {
     return {
@@ -24,7 +24,7 @@ const api = axios.create({
 });
 
 api.interceptors.request.use(async (config: InternalAxiosRequestConfig) => {
-    const token: AuthCredentials | null = await Store.getTokenData();
+    const token: TokenResponse | null = await Store.getTokenData();
     if (token && config.headers) {
         config.headers.Authorization = `Bearer ${token.token}`;
     }

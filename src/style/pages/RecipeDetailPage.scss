@@ -1,0 +1,94 @@
+.recipe-detail {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+
+  .top-section {
+    margin-top: 25px;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+
+    .recipe-image {
+      width: 300px;
+      height: auto;
+      margin-right: 20px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .recipe-info {
+      flex: 1;
+
+      h1 {
+        margin-top: 0;
+        margin-bottom: 15px;
+        font-size: 2em;
+      }
+
+      .ingredients-container, .allergens-container {
+        margin-bottom: 15px;
+      }
+
+      h2 {
+        margin: 0 0 10px 0;
+        font-size: 1.2em;
+      }
+
+      .ingredients-list,
+      .allergens-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .ingredient-item {
+        display: inline-block;
+        background-color: #fff3cd; // yellow-ish background
+        color: #856404;
+        padding: 4px 8px;
+        border-radius: 12px;
+        margin-right: 8px;
+        margin-bottom: 8px;
+        font-size: 14px;
+      }
+
+      .allergen-item {
+        display: inline-block;
+        background-color: #ffcccc; // red-ish background
+        color: #a00;
+        padding: 4px 8px;
+        border-radius: 12px;
+        margin-right: 8px;
+        margin-bottom: 8px;
+        font-size: 14px;
+      }
+    }
+  }
+
+  .steps-section {
+    h2 {
+      margin-bottom: 10px;
+      font-size: 1.2em;
+    }
+    ol {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        color: black;
+        background-color: #f9f9f9;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 10px;
+        margin-bottom: 10px;
+        transition: background-color 0.2s ease;
+
+        &:hover {
+          background-color: #eaeaea;
+        }
+      }
+    }
+  }
+}

@@ -1,7 +1,7 @@
 import secureLocalStorage from "react-secure-storage";
-import { AuthCredentials } from "./loginApi";
+import {TokenResponse} from "./loginApi";
 
-export const storeTokenData = async (authToken: AuthCredentials) => {
+export const storeTokenData = async (authToken: TokenResponse) => {
     try {
         console.log(JSON.stringify(authToken));
         secureLocalStorage.setItem('tokenData', JSON.stringify(authToken));

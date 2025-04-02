@@ -31,6 +31,7 @@ const RecipesPage: React.FC = () => {
                 {dummyRecipes.map(recipe => (
                     <RecipeCard
                         key={recipe.id}
+                        id={recipe.id}
                         name={recipe.name}
                         allergens={recipe.allergens}
                         image={recipe.image}

@@ -1,0 +1,81 @@
+@import '../App.scss';
+
+.login-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.email-input {
+  align-self: center;
+  width: 50%;
+  height: 40px;
+  border-radius: 8px;
+  border-color: $white;
+  border-width: 2px;
+  background-color: rgba(0, 0, 0, 0);
+  padding-left: 10px;
+  color: $white;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.divider-line {
+  width: 93%;
+  height: 3px;
+  background-color: $background;
+  border-radius: 20px;
+  align-self: center;
+  margin-bottom: 20px;
+}
+
+.login-options-box {
+  margin-top: calc(7vh + 40px);
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 4px solid $background;
+  border-radius: 10px;
+  padding-bottom: 20px;
+  align-items: center;
+
+  h1, h4 {
+    align-self: center;
+  }
+
+  h4 {
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+
+  button {
+    border: 0;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 46%;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    &:hover {
+      cursor: grab;
+    }
+  }
+
+  .login-option {
+    background-color: $primary;
+    &:hover {
+      background-color: $primary-dark;
+    }
+  }
+
+  .create-account-option {
+    background-color: $secondary;
+    &:hover {
+      background-color: $secondary-dark;
+    }
+  }
+}
