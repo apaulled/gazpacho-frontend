@@ -1,4 +1,4 @@
-# gazpacho_backend
+# gazpacho-frontend
 
 ## Overview
 gazpacho-frontend is a React frontend for a recipe finder web application. It allows users to search for recipes based on ingredients, cuisine, and other criteria.
