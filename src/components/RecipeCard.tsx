@@ -18,15 +18,13 @@ const RecipeCard: React.FC<RecipeCardProps> = ({ id, name, allergens, image }) =
                 >
                     <h3 className="recipe-name">{name}</h3>
                 </a>
-                {allergens && allergens.length > 0 && (
-                    <ul className="allergens-list">
-                        {allergens.map((allergen, index) => (
-                            <li key={index} className="allergen-item">
-                                {allergen}
-                            </li>
-                        ))}
-                    </ul>
-                )}
+                <ul className="allergens-list">
+                    {allergens && allergens.length > 0 && allergens.map((allergen, index) => (
+                        <li key={index} className="allergen-item">
+                            {allergen}
+                        </li>
+                    ))}
+                </ul>
             </div>
         </div>
     );

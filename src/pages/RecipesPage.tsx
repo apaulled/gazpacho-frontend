@@ -21,6 +21,55 @@ const dummyRecipes = [
         allergens: [],
         image: 'https://kristineskitchenblog.com/wp-content/uploads/2024/01/vegetable-stir-fry-22-3.jpg',
     },
+    {
+        id: 3,
+        name: 'Vegetable Stir Fry',
+        allergens: [],
+        image: 'https://kristineskitchenblog.com/wp-content/uploads/2024/01/vegetable-stir-fry-22-3.jpg',
+    },
+    {
+        id: 3,
+        name: 'Vegetable Stir Fry',
+        allergens: [],
+        image: 'https://kristineskitchenblog.com/wp-content/uploads/2024/01/vegetable-stir-fry-22-3.jpg',
+    },
+    {
+        id: 3,
+        name: 'Vegetable Stir Fry',
+        allergens: [],
+        image: 'https://kristineskitchenblog.com/wp-content/uploads/2024/01/vegetable-stir-fry-22-3.jpg',
+    },{
+        id: 3,
+        name: 'Vegetable Stir Fry',
+        allergens: [],
+        image: 'https://kristineskitchenblog.com/wp-content/uploads/2024/01/vegetable-stir-fry-22-3.jpg',
+    },
+    {
+        id: 3,
+        name: 'Vegetable Stir Fry',
+        allergens: [],
+        image: 'https://kristineskitchenblog.com/wp-content/uploads/2024/01/vegetable-stir-fry-22-3.jpg',
+    },
+    {
+        id: 3,
+        name: 'Vegetable Stir Fry',
+        allergens: [],
+        image: 'https://kristineskitchenblog.com/wp-content/uploads/2024/01/vegetable-stir-fry-22-3.jpg',
+    },
+    {
+        id: 3,
+        name: 'Vegetable Stir Fry',
+        allergens: [],
+        image: 'https://kristineskitchenblog.com/wp-content/uploads/2024/01/vegetable-stir-fry-22-3.jpg',
+    },
+    {
+        id: 3,
+        name: 'Vegetable Stir Fry',
+        allergens: [],
+        image: 'https://kristineskitchenblog.com/wp-content/uploads/2024/01/vegetable-stir-fry-22-3.jpg',
+    },
+
+
 ];
 
 const RecipesPage: React.FC = () => {
