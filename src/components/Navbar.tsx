@@ -5,23 +5,21 @@ import '../style/components/Navbar.scss';
 const Navbar: React.FC = () => {
     return (
         <nav className="navbar">
-            <ul>
-                <li>
-                    <NavLink to="/recipes" className="active">
-                        Recipes
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to="/search" className="active">
-                        Search
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to="/profile" className="active">
-                        Profile
-                    </NavLink>
-                </li>
-            </ul>
+            <div className="nav-content">
+                <div className="nav-group left">
+                    <NavLink to="/recipes" className="nav-link">Recipes</NavLink>
+                    <NavLink to="/search" className="nav-link">Search</NavLink>
+                </div>
+
+                <div className="nav-cutout">
+                    <img src="https://i.gyazo.com/a9d749777403637393b09f9abe596aca.png" alt="gazpacho logo" className="logo" />
+                </div>
+
+                <div className="nav-group right">
+                    <NavLink to="/profile" className="nav-link">Profile</NavLink>
+                    <NavLink to="/settings" className="nav-link">Settings</NavLink>
+                </div>
+            </div>
         </nav>
     );
 };

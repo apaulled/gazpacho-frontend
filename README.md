@@ -25,5 +25,6 @@ gazpacho-frontend is a React frontend for a recipe finder web application. It al
 
 # Getting Started
 - Download the source code
-- Install yarn & dependencies
+- Install yarn
+- Run `yarn install` to install dependencies
 - Use `yarn start` to run the app

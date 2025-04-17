@@ -1,15 +1,16 @@
 /* Color definitions */
-$primary:             #9f0d08;
-$primary-dark:        #8f0d08;
+$primary:             #f7d960;
+$primary-dark:        #8a772c;
 $secondary:           #b2aeae;
 $secondary-dark:      #928e8e;
-$background-dark:     #161618;
-$background:          #202124;
-$background-light:    #33353B;
+$background-dark:     #cc9d5e;
+$background:          #fff6e6;
+$background-light:    #fff6e6;
 $white:               #ffffff;
 
 .app-container {
   display: flex;
+  flex-direction: column;
   height: 100vh;
 }
 
@@ -20,7 +21,7 @@ $white:               #ffffff;
 }
 
 * {
-  color: #ffffff;
+  color: black;
   background-color: $background-light;
   font-family: Cambria, Georgia, serif;
 }

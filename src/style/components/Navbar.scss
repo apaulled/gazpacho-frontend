@@ -1,31 +1,66 @@
 @import '../App.scss';
 
 .navbar {
-  width: 200px;
-  background-color: $background;
-  padding: 20px 10px 20px 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $primary;
+  padding: 0 40px;
+  height: 100px;
+  position: relative;
 
-  ul {
-    background-color: $background;
-    list-style: none;
-    padding: 0;
+  .nav-content{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    position: relative;
+    background-color: $primary;
+  }
 
-    li {
-      background-color: $background;
-      margin-bottom: 25px;
+  .nav-group {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: $primary;
 
-      a {
-        background-color: $background;
-        text-decoration: none;
-        color: $background;
-        font-weight: bold;
-        font-size: xx-large;
+    &.left {
+      margin-right: 200px;
+    }
 
-        &.active {
-          color: $white;
-        }
-      }
+    &.right {
+      margin-left: 200px;
+    }
+  }
+
+  .nav-link {
+    background-color: $primary;
+    text-decoration: none;
+    color: $primary-dark;
+    font-weight: bold;
+    font-size: large;
+    padding: 10px 15px;
+    border-radius: 8px;
+
+    &:hover {
+      background-color: $primary-dark;
+      color: white;
+    }
+
+  }
+
+  .nav-cutout {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    .logo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      height: 140px;
+      border-radius: 50%;
     }
   }
 }
