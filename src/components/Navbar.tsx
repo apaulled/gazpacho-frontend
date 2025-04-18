@@ -17,7 +17,7 @@ const Navbar: React.FC = () => {
 
                 <div className="nav-group right">
                     <NavLink to="/profile" className="nav-link">Profile</NavLink>
-                    <NavLink to="/settings" className="nav-link">Settings</NavLink>
+                    <NavLink to="/about" className="nav-link">About</NavLink>
                 </div>
             </div>
         </nav>
