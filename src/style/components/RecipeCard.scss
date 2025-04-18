@@ -1,6 +1,7 @@
 @import '../App.scss';
 
 .recipe-card {
+  position: relative;
   border: 1px solid #ddd;
   border-radius: 8px;
   overflow: hidden;
@@ -8,6 +9,25 @@
   margin: 10px;
   background-color: $background;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+  .bookmark-container {
+    position: absolute;
+    top: 3%;
+    right: 3%;
+    background: $background-light;
+    width: calc(15px + 10%);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
 
   .recipe-image {
     width: 100%;

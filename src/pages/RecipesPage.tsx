@@ -84,6 +84,7 @@ const RecipesPage: React.FC = () => {
                         name={recipe.name}
                         allergens={recipe.allergens}
                         image={recipe.image}
+                        isSaved={false}
                     />
                 ))}
             </div>
