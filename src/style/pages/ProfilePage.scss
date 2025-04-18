@@ -1,0 +1,38 @@
+@import '../App.scss';
+
+.profile-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-header {
+  display: flex;
+  flex-direction: row;
+}
+
+.profile-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: $background-light;
+  position: relative;
+  top: 20px;
+}
+
+.profile-info {
+  margin-left: 20px;
+}
+
+.saved-recipes {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 70%;
+}
+
+.fancy-text {
+  font-family: 'Caveat', cursive;
+  font-size: xxx-large;
+}
