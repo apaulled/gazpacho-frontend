@@ -26,7 +26,7 @@ const api = axios.create({
 api.interceptors.request.use(async (config: InternalAxiosRequestConfig) => {
     const token: TokenResponse | null = await Store.getTokenData();
     if (token && config.headers) {
-        config.headers.Authorization = `Bearer ${token.token}`;
+        config.headers.Authorization = `Bearer ${token.accessToken}`;
     }
     return config;
 }, (error) => Promise.reject(error));
@@ -41,7 +41,7 @@ api.interceptors.response.use((response: AxiosResponse) => response, async (erro
                 const accessToken = await refreshToken(token.refreshToken);
                 if (accessToken) {
                     await Store.storeTokenData(accessToken);
-                    originalRequest.headers['Authorization'] = `Bearer ${accessToken.token}`;
+                    originalRequest.headers['Authorization'] = `Bearer ${accessToken.accessToken}`;
                     return api(originalRequest);
                 }
             }

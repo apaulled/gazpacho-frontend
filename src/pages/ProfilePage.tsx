@@ -1,14 +1,10 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {RecipeResponse, UserResponse} from "../backend/apiService";
 import RecipeCard from "../components/RecipeCard";
 import profileImage from "../resources/gazpacho_profile.png";
 import '../style/pages/ProfilePage.scss';
-
-const dummyUser: UserResponse = {
-    id: 1,
-    email: "fake@gmail.com",
-    savedRecipeIds: [1, 2, 3],
-}
+import Loading from "../components/Loading";
+import * as api from "../backend/apiService";
 
 const dummyRecipes: RecipeResponse[] = [
     {
@@ -38,16 +34,45 @@ const dummyRecipes: RecipeResponse[] = [
 ]
 
 const ProfilePage: React.FC = () => {
-    return (
+    const [user, setUser] = useState<UserResponse|undefined>(undefined);
+    const [savedRecipes, setSavedRecipes] = useState<RecipeResponse[]>([]);
+
+    useEffect(() => {
+        api.fetchUser().then(res => {
+            setUser(res);
+            res.savedRecipeIds.forEach(id => {
+                api.fetchRecipe(id).then(res2 => {
+                    const tempRecipes = [...savedRecipes];
+                    tempRecipes.push(res2);
+                    // Must copy the list every time because of how React handles state
+                    setSavedRecipes(tempRecipes);
+                });
+            });
+        });
+    });
+
+    return !user ? (<Loading />) : (
         <div className="profile-container">
             <div className="profile-header">
                 <img src={profileImage} alt="Profile Placeholder" className="profile-image"/>
                 <div className="profile-info">
-                    <h1 className="fancy-text">{dummyUser.email}</h1>
-                    <h2 className="fancy-text">Saved Recipes: {dummyRecipes.length}</h2>
+                    <h1 className="fancy-text">{user.email}</h1>
+                    <h2 className="fancy-text">Saved Recipes: {user.savedRecipeIds.length}</h2>
                 </div>
             </div>
             <div className="saved-recipes">
+                {/*savedRecipes.map(recipe => (
+                    <RecipeCard
+                        key={recipe.id}
+                        id={recipe.id}
+                        name={recipe.name}
+                        allergens={recipe.allergens}
+                        image={recipe.image}
+                        isSaved={false}
+                    />
+                ))*/
+                    // TODO: replace dummy recipes with the real list
+                }
                 {dummyRecipes.map(recipe => (
                     <RecipeCard
                         key={recipe.id}
