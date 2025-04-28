@@ -22,6 +22,8 @@ gazpacho-frontend is a React frontend for a recipe finder web application. It al
 
 ## Sprint 2
 - [UML Class Diagram](https://drive.google.com/file/d/1vKeiZq-lz7seI00Zc1JPll_3GGnxyINA/view?usp=sharing)
+- [Demo Document](https://docs.google.com/document/d/1Od9fY8XV9Dbg6KnhyKx39R-3Z8X8laYbC1VSjvj0xAg/edit?usp=sharing)
+- [Retrospective Document](https://docs.google.com/document/d/1pZsrxZPoKm0p0fkrXXoYRcqj5-E8s2rdwLb9lKFo1qQ/edit?tab=t.0)
 
 # Getting Started
 - Download the source code
