@@ -17,10 +17,9 @@ export interface PublicUser {
 }
 
 export interface TokenResponse {
-  userId: number;
-  token: string;
   tokenType: string;
-  expiresIn: number;
+  accessToken: string;
+  refreshToken: string;
 }
 
 export const register = async (email: string, password: string): Promise<PublicUser> => {

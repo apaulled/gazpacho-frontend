@@ -30,7 +30,7 @@ const Main: React.FC = () => {
                     <Route path="/search" Component={SearchPage} />
                     <Route path="/profile" Component={ProfilePage} />
                     <Route path="/login" Component={LoginPage} />
-                    <Route path="/recipe/:id" Component={RecipeDetailPage} />
+                    <Route path="/recipe/:recipeId" Component={RecipeDetailPage} />
                     <Route path="*" element={<h1>Not Found</h1>} />
                 </Routes>
             </div>
