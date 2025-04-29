@@ -6,33 +6,6 @@ import '../style/pages/ProfilePage.scss';
 import Loading from "../components/Loading";
 import * as api from "../backend/apiService";
 
-const dummyRecipes: RecipeResponse[] = [
-    {
-        id: 1,
-        name: 'Spaghetti Bolognese',
-        steps: [],
-        ingredients: [],
-        allergens: ['Gluten'],
-        image: 'https://img.taste.com.au/5qlr1PkR/taste/2016/11/spaghetti-bolognese-106560-1.jpeg',
-    },
-    {
-        id: 2,
-        name: 'Chicken Salad',
-        steps: [],
-        ingredients: [],
-        allergens: ['Nuts'],
-        image: 'https://kalejunkie.com/wp-content/uploads/2023/04/ChickenSalad_Shot4_121.jpg',
-    },
-    {
-        id: 3,
-        name: 'Vegetable Stir Fry',
-        steps: [],
-        ingredients: [],
-        allergens: [],
-        image: 'https://kristineskitchenblog.com/wp-content/uploads/2024/01/vegetable-stir-fry-22-3.jpg',
-    },
-]
-
 const ProfilePage: React.FC = () => {
     const [user, setUser] = useState<UserResponse|undefined>(undefined);
     const [savedRecipes, setSavedRecipes] = useState<RecipeResponse[]>([]);
@@ -40,16 +13,10 @@ const ProfilePage: React.FC = () => {
     useEffect(() => {
         api.fetchUser().then(res => {
             setUser(res);
-            res.savedRecipeIds.forEach(id => {
-                api.fetchRecipe(id).then(res2 => {
-                    const tempRecipes = [...savedRecipes];
-                    tempRecipes.push(res2);
-                    // Must copy the list every time because of how React handles state
-                    setSavedRecipes(tempRecipes);
-                });
-            });
+            api.fetchRecipesBatch(res.savedRecipeIds)
+                .then(r => setSavedRecipes(r));
         });
-    });
+    }, []);
 
     return !user ? (<Loading />) : (
         <div className="profile-container">
@@ -61,28 +28,17 @@ const ProfilePage: React.FC = () => {
                 </div>
             </div>
             <div className="saved-recipes">
-                {/*savedRecipes.map(recipe => (
+                {savedRecipes.map(recipe => (
                     <RecipeCard
                         key={recipe.id}
                         id={recipe.id}
                         name={recipe.name}
                         allergens={recipe.allergens}
                         image={recipe.image}
-                        isSaved={false}
+                        initIsSaved={user.savedRecipeIds.includes(recipe.id)}
                     />
-                ))*/
-                    // TODO: replace dummy recipes with the real list
+                ))
                 }
-                {dummyRecipes.map(recipe => (
-                    <RecipeCard
-                        key={recipe.id}
-                        id={recipe.id}
-                        name={recipe.name}
-                        allergens={recipe.allergens}
-                        image={recipe.image}
-                        isSaved={false}
-                    />
-                ))}
             </div>
         </div>
     );

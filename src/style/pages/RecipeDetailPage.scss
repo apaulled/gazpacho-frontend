@@ -13,7 +13,7 @@
 
     .recipe-image {
       width: 300px;
-      height: auto;
+      height: 300px;
       margin-right: 20px;
       object-fit: cover;
       border-radius: 8px;
@@ -28,7 +28,34 @@
         font-size: 2em;
       }
 
-      .ingredients-container, .allergens-container {
+      .name-section {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        h1 {
+          margin-top: 0;
+          margin-bottom: 15px;
+          font-size: 2em;
+        }
+
+        .bookmark-container {
+          position: relative;
+          width: calc(15px + 3%);
+          aspect-ratio: 1;
+          border-radius: 50%;
+          cursor: pointer;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          &:hover {
+            transform: scale(1.2);
+          }
+        }
+      }
+
+      .ingredients-container, .allergens-container, .description-container {
         margin-bottom: 15px;
       }
 

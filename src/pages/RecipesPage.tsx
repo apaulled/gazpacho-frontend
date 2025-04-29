@@ -5,20 +5,13 @@ import {RecipeResponse} from "../backend/apiService";
 import * as api from "../backend/apiService";
 import {useParams} from "react-router-dom";
 
-// TODO: remove placeholder
-
-const placeholderRecipe = {
-    id: 100,
-    name: 'Spaghetti Bolognese',
-    allergens: ['Gluten'],
-    image: 'https://img.taste.com.au/5qlr1PkR/taste/2016/11/spaghetti-bolognese-106560-1.jpeg'
-}
-
 const RecipesPage: React.FC = () => {
     const [recipes, setRecipes] = useState<RecipeResponse[]>([]);
+    const [savedIds, setSavedIds] = useState<number[]>([]);
 
     useEffect(() => {
         api.searchRecipes("").then(r => setRecipes(r));
+        api.fetchUser().then(res => setSavedIds(res.savedRecipeIds));
     }, []);
 
     return (
@@ -30,9 +23,9 @@ const RecipesPage: React.FC = () => {
                         key={recipe.id}
                         id={recipe.id}
                         name={recipe.name}
-                        allergens={recipe.allergens ? recipe.allergens : placeholderRecipe.allergens}
-                        image={recipe.image ? recipe.image : placeholderRecipe.image}
-                        isSaved={false}
+                        allergens={recipe.allergens}
+                        image={recipe.image}
+                        initIsSaved={savedIds.includes(recipe.id)}
                     />
                 ))}
             </div>

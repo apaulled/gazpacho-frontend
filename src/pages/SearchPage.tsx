@@ -4,6 +4,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import '../style/pages/SearchPage.scss';
 import RecipeCard from "../components/RecipeCard";
 import {RecipeResponse, searchRecipes} from "../backend/apiService";
+import * as api from "../backend/apiService";
 
 // TODO: remove placeholder
 
@@ -21,11 +22,17 @@ const SearchPage: React.FC = () => {
     const [loading, setLoading] = useState<boolean>(false);
     const [recipes, setRecipes] = useState<RecipeResponse[]>([]);
 
+    const [savedIds, setSavedIds] = useState<number[]>([]);
+
+    useEffect(() => {
+        api.fetchUser().then(res => setSavedIds(res.savedRecipeIds));
+    }, []);
+
     const onTextChange = (event: ChangeEvent<HTMLInputElement>) => {
         setInputValue(event.target.value);
-        if (event.target.value.length > 1) {
+        if (event.target.value.length > 0) {
             setLoading(true);
-            searchRecipes(inputValue).then(res => {
+            searchRecipes(event.target.value).then(res => {
                 setRecipes(res);
                 setLoading(false);
             });
@@ -55,7 +62,7 @@ const SearchPage: React.FC = () => {
                         name={recipe.name}
                         allergens={recipe.allergens || placeholderRecipe.allergens}
                         image={recipe.image || placeholderRecipe.image}
-                        isSaved={false}
+                        initIsSaved={savedIds.includes(recipe.id)}
                     />
                 ))}
             </div>

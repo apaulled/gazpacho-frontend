@@ -8,6 +8,7 @@ export interface RecipeResponse {
     ingredients: string[];
     allergens: string[];
     image: string;
+    description: string;
 }
 
 export interface UserResponse {
@@ -41,5 +42,32 @@ export const fetchUser = async (): Promise<UserResponse> => {
         return response.data;
     } catch (error) {
         throw new Error(`Error fetching user data: ${error}`);
+    }
+}
+
+export const saveRecipe = async (recipeId: number): Promise<void> => {
+    try {
+        const response: AxiosResponse<void> = await api.post(`/users/recipes/${recipeId}`);
+        return response.data;
+    } catch (error) {
+        throw new Error(`Error saving recipe: ${error}`);
+    }
+}
+
+export const removeSavedRecipe = async (recipeId: number): Promise<void> => {
+    try {
+        const response: AxiosResponse<void> = await api.delete(`/users/recipes/${recipeId}`);
+        return response.data;
+    } catch (error) {
+        throw new Error(`Error saving recipe: ${error}`);
+    }
+}
+
+export const fetchRecipesBatch = async (recipeIds: number[]): Promise<RecipeResponse[]> => {
+    try {
+        const response: AxiosResponse<RecipeResponse[]> = await api.get(`/recipes/batch?ids=${recipeIds.join(',')}`);
+        return response.data;
+    } catch (error) {
+        throw new Error(`Error fetching recipes: ${error}`);
     }
 }

@@ -1,21 +1,25 @@
-import React from 'react';
+import React, {useState} from 'react';
 import '../style/components/RecipeCard.scss';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+import * as api from "../backend/apiService";
 
 interface RecipeCardProps {
     id: number;
     name: string;
     allergens: string[];
     image: string;
-    isSaved: boolean;
+    initIsSaved: boolean;
 }
 
-const RecipeCard: React.FC<RecipeCardProps> = ({ id, name, allergens, image, isSaved }) => {
+const RecipeCard: React.FC<RecipeCardProps> = ({ id, name, allergens, image, initIsSaved }) => {
+    const [isSaved, setIsSaved] = useState<boolean>(initIsSaved);
+
     const handleBookmarkClicked = (e: React.MouseEvent<HTMLDivElement>) => {
         e.stopPropagation();
-        console.log(`Bookmark clicked for recipe ID: ${id}`);
-        //TODO: Implement bookmark functionality
+        if (!isSaved) api.saveRecipe(id).then();
+        else api.removeSavedRecipe(id).then();
+        setIsSaved(!isSaved);
     };
 
     return (
