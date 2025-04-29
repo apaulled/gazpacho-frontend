@@ -18,7 +18,7 @@ const App: React.FC = () => {
 
 const Main: React.FC = () => {
     const location = useLocation();
-    const hideNavbar = location.pathname === '/login';
+    const hideNavbar = location.pathname === '/hideable';
 
     return (
         <div className="app-container">
