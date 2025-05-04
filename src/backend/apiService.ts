@@ -27,9 +27,9 @@ export const fetchRecipe = async (recipeId: number): Promise<RecipeResponse> => 
     }
 };
 
-export const searchRecipes = async (query: string): Promise<RecipeResponse[]> => {
+export const searchRecipes = async (query: string, searchType: 'name'|'ingredient'|'allergen' = 'name'): Promise<RecipeResponse[]> => {
     try {
-        const response: AxiosResponse<RecipeResponse[]> = await api.get(`/recipes/search?q=${query}`);
+        const response: AxiosResponse<RecipeResponse[]> = await api.get(`/recipes/search?q=${query}&type=${searchType}`);
         return response.data;
     } catch (error) {
         throw new Error(`Error searching recipes: ${error}`);

@@ -6,14 +6,6 @@ import RecipeCard from "../components/RecipeCard";
 import {RecipeResponse, searchRecipes} from "../backend/apiService";
 import * as api from "../backend/apiService";
 
-// TODO: remove placeholder
-
-const placeholderRecipe = {
-    id: 100,
-    name: 'Spaghetti Bolognese',
-    allergens: ['Gluten'],
-    image: 'https://img.taste.com.au/5qlr1PkR/taste/2016/11/spaghetti-bolognese-106560-1.jpeg'
-}
 
 const SearchPage: React.FC = () => {
     const inputRef = useRef<HTMLInputElement>(null);
@@ -23,6 +15,7 @@ const SearchPage: React.FC = () => {
     const [recipes, setRecipes] = useState<RecipeResponse[]>([]);
 
     const [savedIds, setSavedIds] = useState<number[]>([]);
+    const [searchType, setSearchType] = useState<'name'|'ingredient'|'allergen'>('name');
 
     useEffect(() => {
         api.fetchUser().then(res => setSavedIds(res.savedRecipeIds));
@@ -32,12 +25,25 @@ const SearchPage: React.FC = () => {
         setInputValue(event.target.value);
         if (event.target.value.length > 0) {
             setLoading(true);
-            searchRecipes(event.target.value).then(res => {
+            searchRecipes(event.target.value, searchType).then(res => {
                 setRecipes(res);
                 setLoading(false);
             });
         } else {
             setRecipes([]);
+        }
+    }
+
+    const onTypeChange = (e: ChangeEvent<HTMLSelectElement>) => {
+        setSearchType(e.target.value as 'name'|'ingredient'|'allergen');
+
+        if (inputValue.length > 0) {
+            setLoading(true);
+            searchRecipes(inputValue, e.target.value as 'name'|'ingredient'|'allergen')
+                .then(res => {
+                    setRecipes(res);
+                    setLoading(false);
+                });
         }
     }
 
@@ -52,6 +58,15 @@ const SearchPage: React.FC = () => {
                     value={inputValue}
                     onChange={onTextChange}
                 />
+                <select
+                  className="search-type-dropdown"
+                  value={searchType}
+                  onChange={onTypeChange}
+                >
+                    <option value="name">Name</option>
+                    <option value="ingredient">Ingredient</option>
+                    <option value="allergen">Allergen</option>
+                </select>
                 {loading && <CircularProgress className="loading-indicator" size={24} thickness={5}/>}
             </div>
             <div className="recipes-list">
@@ -60,8 +75,8 @@ const SearchPage: React.FC = () => {
                         key={recipe.id}
                         id={recipe.id}
                         name={recipe.name}
-                        allergens={recipe.allergens || placeholderRecipe.allergens}
-                        image={recipe.image || placeholderRecipe.image}
+                        allergens={recipe.allergens}
+                        image={recipe.image}
                         initIsSaved={savedIds.includes(recipe.id)}
                     />
                 ))}
