@@ -3,7 +3,7 @@ import RecipeCard from '../components/RecipeCard';
 import '../style/pages/RecipesPage.scss';
 import {RecipeResponse} from "../backend/apiService";
 import * as api from "../backend/apiService";
-import {useParams} from "react-router-dom";
+import gazpachoLogo from "../resources/gazpacho_logo_mini.png"
 
 const RecipesPage: React.FC = () => {
     const [recipes, setRecipes] = useState<RecipeResponse[]>([]);
@@ -24,7 +24,7 @@ const RecipesPage: React.FC = () => {
                         id={recipe.id}
                         name={recipe.name}
                         allergens={recipe.allergens}
-                        image={recipe.image}
+                        image={recipe.image || gazpachoLogo}
                         initIsSaved={savedIds.includes(recipe.id)}
                     />
                 ))}

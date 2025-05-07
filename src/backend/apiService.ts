@@ -20,7 +20,6 @@ export interface UserResponse {
 export const fetchRecipe = async (recipeId: number): Promise<RecipeResponse> => {
     try {
         const response: AxiosResponse<RecipeResponse> = await api.get(`/recipes/${recipeId}`);
-        console.log(response.data);
         return response.data;
     } catch (error) {
         throw new Error(`Error fetching recipe: ${recipeId}`);

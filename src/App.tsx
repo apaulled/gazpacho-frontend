@@ -7,6 +7,7 @@ import ProfilePage from './pages/ProfilePage';
 import './style/App.scss';
 import LoginPage from "./pages/LoginPage";
 import RecipeDetailPage from "./pages/RecipeDetailPage";
+import TestPage from "./pages/TestPage";
 
 const App: React.FC = () => {
     return (
@@ -27,6 +28,7 @@ const Main: React.FC = () => {
                 <Routes>
                     <Route path="/" Component={RecipesPage} />
                     <Route path="/recipes" Component={RecipesPage} />
+                    <Route path="/test" Component={TestPage} />
                     <Route path="/search" Component={SearchPage} />
                     <Route path="/profile" Component={ProfilePage} />
                     <Route path="/login" Component={LoginPage} />
